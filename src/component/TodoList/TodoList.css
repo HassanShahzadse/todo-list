@@ -1,0 +1,21 @@
+.Input{
+  display: flex;
+  margin: 20px;
+  
+  
+}
+.Form{
+    background-color: aqua;
+}
+.InputTask{
+    font-size: 20px;
+    padding: 4px;
+}
+.AddTask{
+    margin-left: 10px;
+    font-size: 18px;
+    padding: 8px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
