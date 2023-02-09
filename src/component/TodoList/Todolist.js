@@ -11,6 +11,17 @@ class Todolist extends React.Component{
         }
 
     }
+componentDidUpdate(Props,prevStates){
+    const json = JSON.stringify(this.state.items)
+    localStorage.setItem('items',json)
+}
+componentDidMount(){
+    const json = localStorage.getItem('items')
+    const TodoList=JSON.parse(json)
+    this.setState({ items: TodoList || [] });
+}
+
+    
     updateTask= (event) =>{
         this.setState({task : event.target.value})
         }
@@ -22,6 +33,12 @@ class Todolist extends React.Component{
         items:deleteTask
     });
     };
+
+    onComplete = index1 => {
+        document.getElementById(index1.toString()).classList.add("Line");
+      };
+      
+
     AddTaskHandler=(event)=>{
     event.preventDefault();
     this.setState({
@@ -40,12 +57,13 @@ class Todolist extends React.Component{
     {
     return(
         <>
+        
         <div className="Form">
         <div className="Input">
        <input className="InputTask" value={this.state.task} onChange={this.updateTask}></input>
         <button className="AddTask" onClick={this.AddTaskHandler}>Add Task</button>
         </div>
-         <TodoTask deleteTask={this.onDeleteHandler} items={this.state.items} />
+         <TodoTask deleteTask={this.onDeleteHandler} items={this.state.items}/>
          </div>
         </>
        
